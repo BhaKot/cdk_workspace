@@ -43,7 +43,9 @@ class AwsHelpersStack(Stack):
         )"""
 
         # Replace with your existing queue ARN
-        fifo_queue_arn = "arn:aws:sqs:us-east-1:527571104735:gar_qa_sf_infra_consumer"
+        fifo_queue_arn = (
+            "arn:aws:sqs:us-east-1:527571104735:gar_qa_sf_infra_consumer.fifo"
+        )
 
         # Import the existing queue
         fifo_queue = _sqs.Queue.from_queue_arn(self, "FifoQueue", fifo_queue_arn)
