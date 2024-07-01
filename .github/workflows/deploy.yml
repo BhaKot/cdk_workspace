@@ -32,13 +32,13 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
+          aws-region: us-east-1
 
       - name: Bootstrap CDK environment
         run: cdk bootstrap aws://527571104735/us-east-1
 
       - name: Synthesize CDK Stacks
-        run: cdk synth
+        run: cdk synth --region us-east-1
 
       - name: Deploy CDK stack
         run: cdk deploy --region us-east-1 --require-approval never
