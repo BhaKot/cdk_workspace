@@ -41,4 +41,4 @@ jobs:
         run: cdk synth
 
       - name: Deploy CDK stack
-        run: cdk deploy --require-approval never
+        run: cdk deploy --region us-east-1 --require-approval never
