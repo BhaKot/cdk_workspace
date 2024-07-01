@@ -42,6 +42,12 @@ class AwsHelpersStack(Stack):
             ),  # Should be greater than or equal to Lambda timeout
         )"""
 
+        # Replace with your existing queue ARN
+        fifo_queue_arn = "arn:aws:sqs:us-east-1:527571104735:gar_qa_sf_infra_consumer"
+
+        # Import the existing queue
+        fifo_queue = _sqs.Queue.from_queue_arn(self, "FifoQueue", fifo_queue_arn)
+
         # Create an IRole object from the existing role ARN
         lambda_role = _iam.Role.from_role_arn(
             self,
