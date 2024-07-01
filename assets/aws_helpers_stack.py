@@ -19,7 +19,7 @@ class AwsHelpersStack(Stack):
         logging.info(f"Initializing AwsHelpersStack with ID: {construct_id}")
 
         # Create an SQS queue
-        fifo_dlq = _sqs.Queue(
+        """fifo_dlq = _sqs.Queue(
             self,
             "gar_qa_sf_infra_consumer_dlq_fifo",
             queue_name="gar_qa_sf_infra_consumer_dlq.fifo",
@@ -40,7 +40,7 @@ class AwsHelpersStack(Stack):
             visibility_timeout=Duration.seconds(
                 300
             ),  # Should be greater than or equal to Lambda timeout
-        )
+        )"""
 
         # Create an IRole object from the existing role ARN
         lambda_role = _iam.Role.from_role_arn(
