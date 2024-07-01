@@ -52,7 +52,7 @@ class AwsHelpersStack(Stack):
         # Defines the AWS Lambda resource (for v2)
         gar_qa_sf_infra_lambda_v2 = _lambda.Function(
             self,
-            "gar_qa_sf_infra_consumer_v2",
+            "gar_qa_sf_infra_consumer_new_v2",
             runtime=_lambda.Runtime.PYTHON_3_12,
             code=_lambda.Code.from_asset("assets"),
             handler="lambda_function.lambda_handler",
