@@ -49,11 +49,19 @@ class AwsHelpersStack(Stack):
             role_arn="arn:aws:iam::527571104735:role/service-role/GAR_QA_SF_INFRA_LAMBDA-role-jfg7b4jv",
         )
 
+        # Import an existing Lambda function by its ARN
+        existing_lambda_function_v1 = _lambda.Function.from_function_arn(
+            self,
+            "ExistingLambdaFunction",
+            "arn:aws:lambda:us-east-1:527571104735:function:gar_qa_sf_infra_consumer_v1",
+        )
+        # existing_lambda_function is now a reference to the existing Lambda, not owned by the stack
+
         # Check if the Lambda function already exists
         existing_lambda_function = _lambda.Function.from_function_arn(
             self,
             "ExistingLambdaFunction",
-            "arn:aws:lambda:us-east-1:527571104735:function:gar_qa_sf_infra_consumer_v1",
+            "arn:aws:lambda:us-east-1:527571104735:function:gar_qa_sf_infra_consumer_v2",
         )
 
         # Conditionally update or create the Lambda function
@@ -62,14 +70,15 @@ class AwsHelpersStack(Stack):
             try:
                 gar_qa_sf_infra_lambda = _lambda.Function(
                     self,
-                    "gar_qa_sf_infra_consumer_v1",
+                    "gar_qa_sf_infra_consumer_v2",
                     runtime=_lambda.Runtime.PYTHON_3_12,
                     code=_lambda.Code.from_asset("assets"),
                     handler="lambda_function.lambda_handler",
-                    function_name="gar_qa_sf_infra_consumer_v1",
+                    function_name="gar_qa_sf_infra_consumer_v2",
                     role=lambda_role,
                     description="My infra consumer lambda",
                 )
+
                 logging.info(
                     f"Lambda function created: {gar_qa_sf_infra_lambda.function_name}"
                 )
