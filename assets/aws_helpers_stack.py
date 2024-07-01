@@ -60,7 +60,7 @@ class AwsHelpersStack(Stack):
         # Check if the Lambda function already exists
         existing_lambda_function = _lambda.Function.from_function_arn(
             self,
-            "ExistingLambdaFunction",
+            "ExistingLambdaFunctionV2",
             "arn:aws:lambda:us-east-1:527571104735:function:gar_qa_sf_infra_consumer_v2",
         )
 
@@ -70,7 +70,7 @@ class AwsHelpersStack(Stack):
             try:
                 gar_qa_sf_infra_lambda = _lambda.Function(
                     self,
-                    "gar_qa_sf_infra_consumer_v2",
+                    "ExistingLambdaFunctionV2",
                     runtime=_lambda.Runtime.PYTHON_3_12,
                     code=_lambda.Code.from_asset("assets"),
                     handler="lambda_function.lambda_handler",
