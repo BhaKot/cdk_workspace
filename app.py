@@ -3,5 +3,5 @@ import aws_cdk as cdk
 from assets.aws_helpers_stack import AwsHelpersStack
 
 app = cdk.App()
-AwsHelpersStack(app, "AwsHelpersStack")
+AwsHelpersStack(app, "AwsHelpersStackLegacy")
 app.synth()
