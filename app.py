@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
-
 import aws_cdk as cdk
-
-from cdk_workspace.cdk_workspace_stack import CdkWorkspaceStack
-
+from assets.aws_helpers_stack import AwsHelpersStack
 
 app = cdk.App()
-CdkWorkspaceStack(app, "CdkWorkspaceStack")
-
+AwsHelpersStack(app, "AwsHelpersStack")
 app.synth()
